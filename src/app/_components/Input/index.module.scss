@@ -2,20 +2,22 @@
 
 .inputWrap {
   width: 100%;
+  margin:auto;
 }
 
 .input {
   width: 100%;
   font-family: system-ui;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 10px;
+  box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.096);
   border: none;
-  background: none;
-  background-color: var(--theme-elevation-100);
+  background-color: var(--theme-elevation-0);
+  background-size: 5%;
+  background-position-x: 10px;
   color: var(--theme-elevation-1000);
-  height: calc(var(--base) * 2);
+  height: 52px;
   line-height: calc(var(--base) * 2);
-  padding: 0 calc(var(--base) / 2);
+  padding: 16px 13% 16px 16px;
   font-size: inherit;
 
   &:focus {
@@ -51,6 +53,7 @@
   display: block;
   line-height: 1;
   margin-bottom: calc(var(--base) / 2);
+  font-size: 12px;
 }
 
 .errorMessage {
@@ -59,3 +62,4 @@
   margin-top: 4px;
   color: red;
 }
+

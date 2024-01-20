@@ -2,6 +2,7 @@ import React from 'react'
 import { FieldValues, UseFormRegister, Validate } from 'react-hook-form'
 
 import classes from './index.module.scss'
+import Image from 'next/image'
 
 type Props = {
   name: string
@@ -12,6 +13,7 @@ type Props = {
   type?: 'text' | 'number' | 'password' | 'email'
   validate?: (value: string) => boolean | string
   disabled?: boolean
+  image?: string
 }
 
 export const Input: React.FC<Props> = ({
@@ -23,7 +25,16 @@ export const Input: React.FC<Props> = ({
   type = 'text',
   validate,
   disabled,
+  image,
 }) => {
+
+  const inputStyle = {
+    background: `url('${image}') no-repeat 96%`,
+    backgroundSize: '20px',
+    backgroundColor: 'white'
+  };
+
+
   return (
     <div className={classes.inputWrap}>
       <label htmlFor="name" className={classes.label}>
@@ -31,6 +42,7 @@ export const Input: React.FC<Props> = ({
         {required ? <span className={classes.asterisk}>&nbsp;*</span> : ''}
       </label>
       <input
+        style={inputStyle}
         className={[classes.input, error && classes.error].filter(Boolean).join(' ')}
         {...{ type }}
         {...register(name, {
@@ -46,7 +58,10 @@ export const Input: React.FC<Props> = ({
             : {}),
         })}
         disabled={disabled}
+        placeholder={` `}
       />
+      
+      
       {error && (
         <div className={classes.errorMessage}>
           {!error?.message && error?.type === 'required'

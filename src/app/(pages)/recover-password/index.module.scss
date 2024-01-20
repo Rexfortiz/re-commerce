@@ -1,5 +1,116 @@
-@import "../../_css/common";
+@import '../../_css/common';
 
 .recoverPassword {
-  margin-bottom: var(--block-padding);
+  display: grid;
+  grid-template-columns: 1fr 45%;
+  height: 100%;
+  font-family: var(--font-jost);
+
+  @include mid-break {
+    grid-template-columns: 1fr;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url('/assets/images/forgot-password-img.svg');
+  }
+
+  p{
+    color: var(--theme-elevation-1000)
+  }
+}
+
+.heroImg {
+  height: 100%;
+  width: 100%;
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/assets/images/forgot-password-img.svg');
+
+  @include mid-break{
+    background: none;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.logo {
+  margin: auto;
+  width:20%;
+  min-width: 150px;
+  z-index:10;
+
+  @include mid-break{
+    width:  10%;
+    margin: auto;
+  }
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  @include mid-break {
+    justify-content: flex-start;
+    padding: 10px;
+  }
+}
+
+.formContainer {
+  max-width: 600px;
+  width: 100%;
+  padding: 50px;
+  padding-top: 10px;
+  border-radius: 10px;
+
+  @include mid-break {
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.192);
+  }
+
+  @include small-break {
+    padding: 30px;
+  }
+}
+
+
+.formTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  h3 {
+    margin: 8px 0;
+
+    @include mid-break {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+  }
+
+  p {
+    text-align: center;
+    color: var(--color-dark-500);
+  }
+}
+
+.params {
+  margin-top: var(--base);
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 4px;
+  text-decoration: none;
+  p {
+    color: var(--color-dark-500);
+    font-size: 18px;
+  }
 }
