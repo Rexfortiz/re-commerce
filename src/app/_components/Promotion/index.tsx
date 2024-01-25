@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from 'react'
 import classses from './index.module.scss'
+import TrendingProducts from './TrendingProducts'
 
-const Promotion = () => {
+const Promotion = ({ product }) => {
 
   const [time, setTime] = useState({
     days: 0,
@@ -55,6 +56,7 @@ const Promotion = () => {
         </ul>
       </div>
 
+      <TrendingProducts product={product}/>
     </section>
   )
 }

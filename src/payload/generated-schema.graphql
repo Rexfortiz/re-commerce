@@ -18,6 +18,9 @@ type Query {
   Category(id: String!, draft: Boolean): Category
   Categories(draft: Boolean, where: Category_where, limit: Int, page: Int, sort: String): Categories
   docAccessCategory(id: String!): categoriesDocAccess
+  Trending(id: String!, draft: Boolean): Trending
+  Trendings(draft: Boolean, where: Trending_where, limit: Int, page: Int, sort: String): Trendings
+  docAccessTrending(id: String!): trendingDocAccess
   User(id: String!, draft: Boolean): User
   Users(draft: Boolean, where: User_where, limit: Int, page: Int, sort: String): Users
   docAccessUser(id: String!): usersDocAccess
@@ -6188,6 +6191,237 @@ type CategoriesDeleteDocAccess {
   where: JSONObject
 }
 
+type Trending {
+  id: String
+  title: String!
+  trendingProducts: [Product!]
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Trendings {
+  docs: [Trending]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Trending_where {
+  title: Trending_title_operator
+  trendingProducts: Trending_trendingProducts_operator
+  updatedAt: Trending_updatedAt_operator
+  createdAt: Trending_createdAt_operator
+  id: Trending_id_operator
+  AND: [Trending_where_and]
+  OR: [Trending_where_or]
+}
+
+input Trending_title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Trending_trendingProducts_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Trending_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Trending_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Trending_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Trending_where_and {
+  title: Trending_title_operator
+  trendingProducts: Trending_trendingProducts_operator
+  updatedAt: Trending_updatedAt_operator
+  createdAt: Trending_createdAt_operator
+  id: Trending_id_operator
+  AND: [Trending_where_and]
+  OR: [Trending_where_or]
+}
+
+input Trending_where_or {
+  title: Trending_title_operator
+  trendingProducts: Trending_trendingProducts_operator
+  updatedAt: Trending_updatedAt_operator
+  createdAt: Trending_createdAt_operator
+  id: Trending_id_operator
+  AND: [Trending_where_and]
+  OR: [Trending_where_or]
+}
+
+type trendingDocAccess {
+  fields: TrendingDocAccessFields
+  create: TrendingCreateDocAccess
+  read: TrendingReadDocAccess
+  update: TrendingUpdateDocAccess
+  delete: TrendingDeleteDocAccess
+}
+
+type TrendingDocAccessFields {
+  title: TrendingDocAccessFields_title
+  trendingProducts: TrendingDocAccessFields_trendingProducts
+  updatedAt: TrendingDocAccessFields_updatedAt
+  createdAt: TrendingDocAccessFields_createdAt
+}
+
+type TrendingDocAccessFields_title {
+  create: TrendingDocAccessFields_title_Create
+  read: TrendingDocAccessFields_title_Read
+  update: TrendingDocAccessFields_title_Update
+  delete: TrendingDocAccessFields_title_Delete
+}
+
+type TrendingDocAccessFields_title_Create {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_title_Read {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_title_Update {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_title_Delete {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_trendingProducts {
+  create: TrendingDocAccessFields_trendingProducts_Create
+  read: TrendingDocAccessFields_trendingProducts_Read
+  update: TrendingDocAccessFields_trendingProducts_Update
+  delete: TrendingDocAccessFields_trendingProducts_Delete
+}
+
+type TrendingDocAccessFields_trendingProducts_Create {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_trendingProducts_Read {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_trendingProducts_Update {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_trendingProducts_Delete {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_updatedAt {
+  create: TrendingDocAccessFields_updatedAt_Create
+  read: TrendingDocAccessFields_updatedAt_Read
+  update: TrendingDocAccessFields_updatedAt_Update
+  delete: TrendingDocAccessFields_updatedAt_Delete
+}
+
+type TrendingDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_createdAt {
+  create: TrendingDocAccessFields_createdAt_Create
+  read: TrendingDocAccessFields_createdAt_Read
+  update: TrendingDocAccessFields_createdAt_Update
+  delete: TrendingDocAccessFields_createdAt_Delete
+}
+
+type TrendingDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type TrendingDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type TrendingCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TrendingReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TrendingUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TrendingDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type Users {
   docs: [User]
   hasNextPage: Boolean
@@ -8513,6 +8747,7 @@ type Access {
   orders: ordersAccess
   media: mediaAccess
   categories: categoriesAccess
+  trending: trendingAccess
   users: usersAccess
   redirects: redirectsAccess
   payload_preferences: payload_preferencesAccess
@@ -10564,6 +10799,133 @@ type CategoriesDeleteAccess {
   where: JSONObject
 }
 
+type trendingAccess {
+  fields: TrendingFields
+  create: TrendingCreateAccess
+  read: TrendingReadAccess
+  update: TrendingUpdateAccess
+  delete: TrendingDeleteAccess
+}
+
+type TrendingFields {
+  title: TrendingFields_title
+  trendingProducts: TrendingFields_trendingProducts
+  updatedAt: TrendingFields_updatedAt
+  createdAt: TrendingFields_createdAt
+}
+
+type TrendingFields_title {
+  create: TrendingFields_title_Create
+  read: TrendingFields_title_Read
+  update: TrendingFields_title_Update
+  delete: TrendingFields_title_Delete
+}
+
+type TrendingFields_title_Create {
+  permission: Boolean!
+}
+
+type TrendingFields_title_Read {
+  permission: Boolean!
+}
+
+type TrendingFields_title_Update {
+  permission: Boolean!
+}
+
+type TrendingFields_title_Delete {
+  permission: Boolean!
+}
+
+type TrendingFields_trendingProducts {
+  create: TrendingFields_trendingProducts_Create
+  read: TrendingFields_trendingProducts_Read
+  update: TrendingFields_trendingProducts_Update
+  delete: TrendingFields_trendingProducts_Delete
+}
+
+type TrendingFields_trendingProducts_Create {
+  permission: Boolean!
+}
+
+type TrendingFields_trendingProducts_Read {
+  permission: Boolean!
+}
+
+type TrendingFields_trendingProducts_Update {
+  permission: Boolean!
+}
+
+type TrendingFields_trendingProducts_Delete {
+  permission: Boolean!
+}
+
+type TrendingFields_updatedAt {
+  create: TrendingFields_updatedAt_Create
+  read: TrendingFields_updatedAt_Read
+  update: TrendingFields_updatedAt_Update
+  delete: TrendingFields_updatedAt_Delete
+}
+
+type TrendingFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type TrendingFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type TrendingFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type TrendingFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type TrendingFields_createdAt {
+  create: TrendingFields_createdAt_Create
+  read: TrendingFields_createdAt_Read
+  update: TrendingFields_createdAt_Update
+  delete: TrendingFields_createdAt_Delete
+}
+
+type TrendingFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type TrendingFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type TrendingFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type TrendingFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type TrendingCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TrendingReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TrendingUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TrendingDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type usersAccess {
   fields: UsersFields
   create: UsersCreateAccess
@@ -12014,6 +12376,9 @@ type Mutation {
   createCategory(data: mutationCategoryInput!, draft: Boolean): Category
   updateCategory(id: String!, autosave: Boolean, data: mutationCategoryUpdateInput!, draft: Boolean): Category
   deleteCategory(id: String!): Category
+  createTrending(data: mutationTrendingInput!, draft: Boolean): Trending
+  updateTrending(id: String!, autosave: Boolean, data: mutationTrendingUpdateInput!, draft: Boolean): Trending
+  deleteTrending(id: String!): Trending
   createUser(data: mutationUserInput!, draft: Boolean): User
   updateUser(id: String!, autosave: Boolean, data: mutationUserUpdateInput!, draft: Boolean): User
   deleteUser(id: String!): User
@@ -12317,6 +12682,20 @@ input mutationCategoryUpdate_BreadcrumbsInput {
   url: String
   label: String
   id: String
+}
+
+input mutationTrendingInput {
+  title: String!
+  trendingProducts: [String]
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationTrendingUpdateInput {
+  title: String
+  trendingProducts: [String]
+  updatedAt: String
+  createdAt: String
 }
 
 input mutationUserInput {

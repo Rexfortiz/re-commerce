@@ -47,19 +47,21 @@ export default async function Orders() {
   }
 
   return (
-    <Gutter className={classes.orders}>
-      <h1>Orders</h1>
+    <div>
+      <h5>My Orders</h5>
       {(!orders || !Array.isArray(orders) || orders?.length === 0) && (
         <p className={classes.noOrders}>You have no orders.</p>
       )}
       <RenderParams />
       {orders && orders.length > 0 && (
-        <ul className={classes.ordersList}>
+        <ul className={classes.orders}>
           {orders?.map((order, index) => (
-            <li key={order.id} className={classes.listItem}>
-              <Link className={classes.item} href={`/orders/${order.id}`}>
+            <li key={order.id} className={classes.order}>
+              <div className={classes.item}>
                 <div className={classes.itemContent}>
-                  <h4 className={classes.itemTitle}>{`Order ${order.id}`}</h4>
+                  <Link href={`/account/orders/${order.id}`}>
+                    <h6 className={classes.itemTitle}>{`Order ${order.id}`}</h6>
+                  </Link>
                   <div className={classes.itemMeta}>
                     <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
                     <p>
@@ -71,21 +73,21 @@ export default async function Orders() {
                     </p>
                   </div>
                 </div>
-                <Button
-                  appearance="secondary"
-                  label="View Order"
-                  className={classes.button}
-                  el="button"
-                />
-              </Link>
-              {index !== orders.length - 1 && <HR />}
+                <Link href={`/account/orders/${order.id}`}>
+                  <Button
+                    appearance="secondary"
+                    label="View Order"
+                    className={classes.button}
+                    el="button"
+                  />
+                </Link>
+              
+              </div>
             </li>
           ))}
         </ul>
       )}
-      <HR />
-      <Button href="/account" appearance="primary" label="Go to account" />
-    </Gutter>
+    </div>
   )
 }
 

@@ -21,6 +21,7 @@ export interface Config {
     orders: Order;
     media: Media;
     categories: Category;
+    trending: Trending;
     users: User;
     redirects: Redirect;
     'payload-preferences': PayloadPreference;
@@ -430,6 +431,13 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password: string | null;
+}
+export interface Trending {
+  id: string;
+  title: string;
+  trendingProducts?: (string | Product)[] | null;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface Redirect {
   id: string;

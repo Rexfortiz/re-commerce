@@ -7,6 +7,7 @@ import { PRODUCTS } from '../_graphql/products'
 import { GRAPHQL_API_URL } from './shared'
 import { payloadToken } from './token'
 import { CATEGORIES } from '../_graphql/categories'
+import { TRENDING } from '../_graphql/trending'
 
 const queryMap = {
   pages: {
@@ -24,6 +25,10 @@ const queryMap = {
   categories: {
     query: CATEGORIES,
     key: 'Categories'
+  },
+  trending: {
+    query: TRENDING,
+    key: 'Trending'
   }
 }
 

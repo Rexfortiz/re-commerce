@@ -1,0 +1,12 @@
+@import '../../../_css/common.scss';
+
+.titleWrapper {
+  background-color: var(--theme-elevation-1000);
+  padding: 10px 20px;
+  border-radius: 15px;
+
+  h3 {
+    font-weight: 400;
+    color: white;
+  }
+}

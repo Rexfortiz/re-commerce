@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import { Category, Page } from '../../../payload/payload-types'
+import { Category, Page, Product } from '../../../payload/payload-types'
 import { staticHome } from '../../../payload/seed/home-static'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
@@ -28,10 +28,17 @@ export default async function Page({ params: { slug = 'home' } }) {
 
   let page: Page | null = null
   let categories: Category[] | null = null
+  let product: Product | null = null
 
   try {
     page = await fetchDoc<Page>({
       collection: 'pages',
+      slug,
+      draft: isDraftMode,
+    })
+    
+    product = await fetchDoc<Product>({
+      collection: 'trending',
       slug,
       draft: isDraftMode,
     })
@@ -65,7 +72,7 @@ export default async function Page({ params: { slug = 'home' } }) {
           <Hero {...hero} />
           <Gutter className='classes.home'>
             <Categories categories={categories}/>
-            <Promotion />
+            <Promotion product={product}/>
           </Gutter>
         </section>
       ) : (
